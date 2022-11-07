@@ -2,7 +2,7 @@ module.exports={
 
     //admin dashboard controller
     index: (req, res, next) =>
-        res.render('index', { title: 'Dashboard' }),
+        res.render('backend/dashboard/index', { title: 'Dashboard', layout: 'backend/layout'}),
     
         //blog controller
 
@@ -30,7 +30,7 @@ module.exports={
         //team controller
 
     teamIndex: (req, res, next) =>
-        res.render('index', { title: 'List of team' }),
+        res.render('backend/team/index', { title: 'List of team', layout: 'backend/layout' }),
 
     teamCreate: (req, res, next) =>
         res.render('index', { title: 'team Create' }),

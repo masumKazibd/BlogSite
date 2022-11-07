@@ -20,8 +20,8 @@ app.engine('.hbs', engine(
     defaultView:"frontend/index",
     layoutsDir: __dirname + '/views/layouts',
     defaultLayout:"frontend/layout",
+    // backendLayout:"backend/layout",
     partialsDir: __dirname + '/views/partials'
-
   }
 ))
 
