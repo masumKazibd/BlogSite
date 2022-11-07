@@ -1,0 +1,28 @@
+{{!-- <h1 style="background-color: blue ;">Frontend</h1>
+
+header from partials
+{{>frontend/_header}} 
+{{{body}}} 
+{{>frontend/__footer}}  --}}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+{{>frontend/head}}
+<body>
+
+  {{>frontend/_header}}
+
+{{{body}}} 
+
+
+  {{>frontend/__footer}}
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {{>frontend/script}}
+
+</body>
+
+</html>
