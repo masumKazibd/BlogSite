@@ -1,11 +1,11 @@
 var express = require('express');
-const blogControler = require('../controlers/blogControler');
+const blogControler = require('../controlers/backend_Controler');
 var router = express.Router();
 
 /* GET Admin page. */
+router.get('/', blogControler.index);
 
 /* GET Blog page. */
-router.get('/', blogControler.index);
 
 router.get('/blog', blogControler.blog);
 

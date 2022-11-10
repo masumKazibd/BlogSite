@@ -7,7 +7,7 @@ module.exports={
         //blog controller
 
     blog: (req, res, next) =>
-        res.render('index', { title: 'Blog' }),
+        res.render('backend/blog/index', { title: 'Blog' }),
 
     create: (req, res, next) =>
         res.render('index', { title: 'Blog Create' }),

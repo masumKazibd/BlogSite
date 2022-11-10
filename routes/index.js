@@ -1,5 +1,5 @@
 var express = require('express');
-const pageControler = require('../controlers/pageControler');
+const pageControler = require('../controlers/frontend_Controler');
 var router = express.Router();
 
 /* GET home page. */

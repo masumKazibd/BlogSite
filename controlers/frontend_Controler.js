@@ -1,6 +1,9 @@
+const config = require('../config/index')
+
 module.exports={
     home: (req, res, next) =>
-        res.render('frontend/index', { title: 'Home' }),
+        // console.log(config.NAME),
+        res.render('frontend/index', { title: config.NAME }),
     
     team: (req, res, next) =>
         res.render('frontend/team', { title: 'Meet our team' }),
