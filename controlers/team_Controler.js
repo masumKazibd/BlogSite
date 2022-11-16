@@ -4,7 +4,7 @@ module.exports={
     //team controller
 
     teamIndex: (req, res, next) =>
-        res.render('backend/dashboard/test', { title: 'List of team', layout: 'backend/layout' }),
+        res.render('backend/team/index', { title: 'List of team', layout: 'backend/layout' }),
 
     teamCreate: (req, res, next) =>
         res.render('index', { title: 'team Create', layout: 'backend/layout' }),
