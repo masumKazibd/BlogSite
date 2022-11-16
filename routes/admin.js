@@ -1,12 +1,14 @@
 var express = require('express');
-const backend_Controler = require('../controlers/backend_Controler');
+const dashboard_Controler = require('../controlers/dashboard_Controler');
 const blog_Controler = require('../controlers/blog_Controler');
 const team_Controler = require('../controlers/team_Controler');
+const testimonial_Controler = require('../controlers/testimonial_Controler');
+const contact_Controler = require('../controlers/contact_Controler');
 
 var router = express.Router();
 
 /* Route Admin page. */
-router.get('/', backend_Controler.admin);
+router.get('/', dashboard_Controler.admin);
 
 /* Route Blog page. */
 
@@ -40,40 +42,40 @@ router.post('/team/store', team_Controler.teamStore);
 
 router.put('/team/:id/update', team_Controler.teamUpdate);
 
-        //   Route Testomonial page. 
+//   Route Testomonial page. 
 
-    router.get('/testimonial', backend_Controler.testimonialIndex);
+router.get('/testimonial', testimonial_Controler.testimonialIndex);
 
-    router.get('/testimonial/create', backend_Controler.testimonialCreate);
-        
-    router.get('/testimonial/:id/edit', backend_Controler.testimonialEdit);
-        
-    router.delete('/testimonial/:id/delete', backend_Controler.testimonialDelete);
-        
-    router.get('/testimonial/:id/show', backend_Controler.testimonialShow);
-        
-    router.post('/testimonial/store', backend_Controler.testimonialStore);
-        
-    router.put('/testimonial/:id/update', backend_Controler.testimonialUpdate);
+router.get('/testimonial/create', testimonial_Controler.testimonialCreate);
+
+router.get('/testimonial/:id/edit', testimonial_Controler.testimonialEdit);
+
+router.delete('/testimonial/:id/delete', testimonial_Controler.testimonialDelete);
+
+router.get('/testimonial/:id/show', testimonial_Controler.testimonialShow);
+
+router.post('/testimonial/store', testimonial_Controler.testimonialStore);
+
+router.put('/testimonial/:id/update', testimonial_Controler.testimonialUpdate);
 
 
-        //   Route Contact us page. 
+//   Route Contact us page. 
 
-    router.get('/contact', backend_Controler.contactIndex);
+router.get('/contact', contact_Controler.contactIndex);
 
-    router.get('/contact/create', backend_Controler.contactCreate);
-        
-    router.get('/contact/:id/edit', backend_Controler.contactEdit);
-        
-    router.delete('/contact/:id/delete', backend_Controler.contactDelete);
-        
-    router.get('/contact/:id/show', backend_Controler.contactShow);
-        
-    router.post('/contact/store', backend_Controler.contactStore);
-        
-    router.put('/contact/:id/update', backend_Controler.contactUpdate);
+router.get('/contact/create', contact_Controler.contactCreate);
 
-  
+router.get('/contact/:id/edit', contact_Controler.contactEdit);
+
+router.delete('/contact/:id/delete', contact_Controler.contactDelete);
+
+router.get('/contact/:id/show', contact_Controler.contactShow);
+
+router.post('/contact/store', contact_Controler.contactStore);
+
+router.put('/contact/:id/update', contact_Controler.contactUpdate);
+
+
 //   /* Route Social Media Link page. */
 
 

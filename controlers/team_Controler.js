@@ -1,3 +1,5 @@
+const TeamModel = require('../models/team');
+
 module.exports={
     //team controller
 

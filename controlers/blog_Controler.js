@@ -1,5 +1,7 @@
+const BlogModel = require('../models/blog');
+
 module.exports = {
-    //blog controller
+    //blog controller Start
 
     blog: (req, res, next) =>
         res.render('backend/blog/index', { title: 'Blog', layout: 'backend/layout' }),
@@ -20,5 +22,6 @@ module.exports = {
 
     update: (req, res, next) =>
         res.render('index', { title: 'Update Blog', layout: 'backend/layout' })
+    //blog controller End
 
 }

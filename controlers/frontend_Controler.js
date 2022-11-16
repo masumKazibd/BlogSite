@@ -1,8 +1,7 @@
-const config = require('../config/index')
+const config = require('../config/index');
 
 module.exports={
     home: (req, res, next) =>
-        // console.log(config.NAME),
         res.render('frontend/index', { title: config.NAME }),
     
     team: (req, res, next) =>
