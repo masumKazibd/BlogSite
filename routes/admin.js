@@ -12,7 +12,7 @@ router.get('/', dashboard_Controler.admin);
 
 /* Route Blog page. */
 
-router.get('/blog', blog_Controler.blog);
+router.get('/blog', blog_Controler.index);
 
 router.get('/blog/create', blog_Controler.create);
 

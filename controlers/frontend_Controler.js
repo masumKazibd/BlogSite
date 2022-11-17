@@ -2,7 +2,7 @@ const config = require('../config/index');
 
 module.exports={
     home: (req, res, next) =>
-        res.render('frontend/index', { title: config.NAME }),
+        res.render('frontend/index', { title: 'Home' }),
     
     team: (req, res, next) =>
         res.render('frontend/team', { title: 'Meet our team' }),
