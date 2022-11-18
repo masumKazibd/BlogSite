@@ -4,6 +4,7 @@ const blog_Controler = require('../controlers/blog_Controler');
 const team_Controler = require('../controlers/team_Controler');
 const testimonial_Controler = require('../controlers/testimonial_Controler');
 const contact_Controler = require('../controlers/contact_Controler');
+const BlogRequest = require('../request/blog');
 
 var router = express.Router();
 
@@ -22,7 +23,7 @@ router.delete('/blog/:id/delete', blog_Controler.delete);
 
 router.get('/blog/:id/show', blog_Controler.show);
 
-router.post('/blog/store', blog_Controler.store);
+router.post('/blog/store', BlogRequest.store, blog_Controler.store);
 
 router.put('/blog/:id/update', blog_Controler.update);
 
