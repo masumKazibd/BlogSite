@@ -38,7 +38,7 @@ module.exports = {
             return res.json({ errors: errors.mapped() });
         }
         // Send data to Database
-        const blog = new BlogModel({
+        const blog=new BlogModel({
           title: req.body.title,
           slug: req.body.slug,
           details: req.body.details,
