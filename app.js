@@ -21,13 +21,13 @@ app.engine('.hbs', engine(
     defaultView:"frontend/index",
     layoutsDir: __dirname + '/views/layouts',
     defaultLayout:"frontend/layout",
-    // backendLayout:"backend/layout",
     partialsDir: __dirname + '/views/partials'
   }
 ))
 
 
 app.use(logger('dev'));
+// use middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -53,8 +53,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(process.env.PORT, () =>{
-//   console.log('Example app listening on port')
-// })
 
 module.exports = app;

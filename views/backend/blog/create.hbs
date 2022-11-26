@@ -21,44 +21,44 @@
             <h5 class="card-title">Post a new Blog</h5>
 
             <!-- General Form Elements -->
-            <form method="POST" action="/admin/blog/store">
+            <form method="post" action="/admin/blog/store">
               <div class="row mb-3">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
-                  <input type="text" name="title" id="title" placeholder="Blog Title" class="form-control">
+                  <input type="text" name="title" placeholder="Blog Title" class="form-control">
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="slug" class="col-sm-2 col-form-label">Slug</label>
                 <div class="col-sm-10">
-                  <input type="text" name="slug" id="slug" placeholder="Slug" class="form-control">
-                </div>
-              </div>
-
-              <div class="row mb-3">
-                <label for="image" class="col-sm-2 col-form-label">Image</label>
-                <div class="col-sm-10">
-                  <input  class="form-control" type="file" id="image" name="image" >
+                  <input type="text" name="slug" placeholder="Slug" class="form-control">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <label for="details" class="col-sm-2 col-form-label">Details</label>
                 <div class="col-sm-10">
-                  <textarea class="form-control" name="details" placeholder="Write about your blog" style="height: 100px"></textarea>
+                  <textarea type="text" class="form-control" name="details" placeholder="Write about your blog"
+                    style="height: 100px"></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="image" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" name="image">
                 </div>
               </div>
 
               <div class="row mb-3">
                 <div class="d-flex justify-content-center">
-                  
+
                   <button type="submit" class="btn btn-outline-success m-2 shadow">Post</button>
                   <button type="reset" class="btn btn-outline-danger m-2 shadow">Reset</button>
                 </div>
               </div>
 
             </form><!-- End General Form Elements -->
-
 
           </div>
 

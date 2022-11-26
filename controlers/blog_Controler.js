@@ -5,13 +5,6 @@ module.exports = {
     //blog controller Start
 
     index: (req, res, next) => {
-        //blog list
-        // BlogModel.find((err, docs) => {
-        //     if (err) {
-        //         return res.json({ error: "Something went wrong!" + err })
-        //     }
-        //     return res.json({ blogs: docs });
-        // });
         res.render('backend/blog/index', { title: 'Blogs', layout: 'backend/layout' });
     },
 
@@ -28,34 +21,39 @@ module.exports = {
         res.render('index', { title: 'Blog delete', layout: 'backend/layout' }),
 
     //Blog Show
-    show: (req, res, next) =>
-        res.render('index', { title: 'Blog show', layout: 'backend/layout' }),
-
+    show: (req, res, next) => {
+        BlogModel.find((err,docs)=>{
+            if(err){
+                return res.json({error:"Something went wrong!"+err})
+            }
+            return res.json({blogs:docs});
+        })
+        // res.render('index', { title: 'Blog show', layout: 'backend/layout' }),
+    },
     //Blog Store
     store: (req, res, next) => {
+        // Data Validiation
         const errors = validationResult(req);
-          if(!errors.isEmpty()){
-            return res.json({errors:errors.mapped()});
-          }
+        if (!errors.isEmpty()) {
+            return res.json({ errors: errors.mapped() });
+        }
+        // Send data to Database
+        const blog = new BlogModel({
+          title: req.body.title,
+          slug: req.body.slug,
+          details: req.body.details,
+          image: req.body.image
+        });
 
-        return res.json(req.body);
+        blog.save((err,newBlog)=>{
+            if(err){
+              return res.json({error:"Something went wrong!"+err})
+            }
+            return res.json({blog:newBlog});
+        });
 
-
-        //   const blog=new BlogModel({
-        //     title:req.body.title,
-        //     slug:req.body.slug,
-        //     details:req.body.image,
-        //     image:req.body.image
-        //   });
-
-        //   blog.save((err,newBlg)=>{
-        //     if(err){
-        //         return res.json({error:"Something went wrong!" +err})
-        //     }
-        //     return res.json({blgo:newBlg});
-        //   });
-        // res.render('index', { title: 'Blog Store', layout: 'backend/layout' });
-
+        // return res.json(req.body);
+        // res.render('backend/blog/store', { title: 'Blog Store', layout: 'backend/layout' });
     },
 
     //Blog Update
