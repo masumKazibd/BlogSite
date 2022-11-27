@@ -10,9 +10,18 @@ module.exports = {
             if (err) {
                 return res.json({ error: "Something went wrong!" + err })
             }
-            return res.json({ blogs: docs });
-        })
-        res.render('backend/blog/index', { title: 'Blogs', layout: 'backend/layout' });
+            // return res.json({ blogs: docs });
+            const blogs = [];
+            docs.forEach(Element => {
+                blogs.push({
+                    title: Element.title,
+                    details: Element.details,
+                    id: Element._id,
+                    image: Element.image
+                });
+            });
+            res.render('backend/blog/index', { title: 'Blog List', layout: 'backend/layout', data: blogs });
+        });
     },
 
     //Blog Create
@@ -46,14 +55,14 @@ module.exports = {
         }
 
         let sampleFile;
-        if (!req.files || object.keys(req.files).length === 0) {
+        if (!req.files || Object.keys(req.files).length === 0) {
             return res.status(400).send('No files were uploaded.');
         }
 
         // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
         sampleFile = req.files.image;
-        let rnd=new Date().valueOf();
-        let filePath = 'upload/' +rnd+sampleFile.name;
+        let rnd = new Date().valueOf();
+        let filePath = 'upload/' + rnd + sampleFile.name;
 
         // Use the mv() method to place the file somewhere on your server
 
@@ -77,7 +86,7 @@ module.exports = {
             if (err) {
                 return res.json({ error: "Something went wrong!" + err })
             }
-            return res.json({ blog: newBlog });
+            // return res.json({ blog: newBlog });
         });
 
         // return res.json(req.body);

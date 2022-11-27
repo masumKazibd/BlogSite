@@ -4,9 +4,9 @@
     <h1>Blogs</h1>
     <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Home</a></li>
-        <li class="breadcrumb-item">blog</li>
-        <li class="breadcrumb-item active">all blog</li>
+        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+        <li class="breadcrumb-item">Blog</li>
+        <li class="breadcrumb-item active">{{title}}</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -24,10 +24,11 @@
           </tr>
         </thead>
         <tbody>
+          {{#each data}}
           <tr>
             <td>1</td>
-            <td>hell</td>
-            <td>hell.png</td>
+            <td>{{title}}</td>
+            <td>{{details}}</td>
             <td>hello</td>
             <td>
               <a href="/admin/blog/1/edit" class="btn btn-outline-warning btn-sm"><i class="bi bi-pencil-square"></i></a>
@@ -35,6 +36,7 @@
               <a href="/admin/blog/1/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
             </td>
           </tr>
+          {{/each}}
         </tbody>
       </table>
     </div>
