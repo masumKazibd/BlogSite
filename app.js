@@ -39,6 +39,10 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin', adminRouter);
 
+app.get("*",(rea,res)=>{
+  res.render("backend/dashboard/notFound", {title:"Page not found", layout:"backend/layout"});
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
