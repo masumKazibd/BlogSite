@@ -40,12 +40,19 @@ module.exports = {
     show: (req, res, next) => {
         BlogModel.findById(req.params.id)
             .then((blog) => {
-                res.json({ "blog": blog });
+                // res.json({ "blog": blog });
+                const details={
+                    title:blog.title,
+                    details:blog.details,
+                    image:blog.image
+                }
+                res.render('backend/blog/show', { title: 'Blog Show', layout: 'backend/layout', blog:details });
             })
             .catch((err) => {
                 res.json({ "error": "Something went wrong" });
             })
     },
+    
     //Blog Store
     store: (req, res, next) => {
         // Data Validiation
@@ -90,6 +97,7 @@ module.exports = {
         });
 
         // return res.json(req.body);
+        
         // res.render('backend/blog/store', { title: 'Blog Store', layout: 'backend/layout' });
     },
 

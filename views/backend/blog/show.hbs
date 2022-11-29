@@ -1,0 +1,123 @@
+<body>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>General Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="single-post-content">
+      <div class="card">
+        <div class="card-body">
+          <!-- ======= Single Post Content ======= -->
+          <div class="card">
+            <div class="card-title"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th
+                '22</span></div>
+            <h1 class="card-header">{{blog.title}}</h1>
+            <div class="card mb-3">
+              <img src="/{{blog.image}}" class="card-img-top" alt="{{blog.image}}">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              </div>
+            </div>
+            <div class="d-flex justify-content-center shadow">
+              <img src="/{{blog.image}}" alt="{{blog.image}}" class="img-fluid w-50 m-3">
+            </div>
+
+            <p>{{blog.details}}.</p>
+
+            <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, odit? </figcaption>
+
+          </div><!-- End Single Post Content -->
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+    {{!-- <section class="section">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Table with hoverable rows</h5>
+
+          <!-- Table with hoverable rows -->
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Age</th>
+                <th scope="col">Start Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Brandon Jacob</td>
+                <td>Designer</td>
+                <td>28</td>
+                <td>2016-05-25</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Bridie Kessler</td>
+                <td>Developer</td>
+                <td>35</td>
+                <td>2014-12-05</td>
+              </tr>
+              <tr>
+            </tbody>
+          </table>
+          <!-- End Table with hoverable rows -->
+
+        </div>
+      </div>
+
+    </section> --}}
+
+    {{!-- <table class="table table-dark">
+      <thead>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Title</th>
+          <td>:</td>
+          <td>
+            {{blogs.title}}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Details</th>
+          <td>:</td>
+          <td>
+            {{blogs.details}}
+          </td>
+        </tr>
+
+        <tr>
+          <th>Image</th>
+          <td>:</td>
+          <td>
+            <img src="/{{blogs.image}}" width="200px" alt="">
+          </td>
+        </tr>
+      </tbody>
+    </table> --}}
+
+  </main><!-- End #main -->
+
+
+</body>

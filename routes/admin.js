@@ -21,7 +21,7 @@ router.get('/blog/:id/edit', blog_Controler.edit);
 
 router.delete('/blog/:id/delete', blog_Controler.delete);
 
-router.get('/blog/:id/show', blog_Controler.show);
+router.get('/blog/:id/view', blog_Controler.show);
 
 router.post('/blog/store', BlogRequest.store, blog_Controler.store);
 
@@ -37,7 +37,7 @@ router.get('/team/:id/edit', team_Controler.teamEdit);
 
 router.delete('/team/:id/delete', team_Controler.teamDelete);
 
-router.get('/team/:id/show', team_Controler.teamShow);
+router.get('/team/:id/view', team_Controler.teamShow);
 
 router.post('/team/store', team_Controler.teamStore);
 
@@ -53,7 +53,7 @@ router.get('/testimonial/:id/edit', testimonial_Controler.testimonialEdit);
 
 router.delete('/testimonial/:id/delete', testimonial_Controler.testimonialDelete);
 
-router.get('/testimonial/:id/show', testimonial_Controler.testimonialShow);
+router.get('/testimonial/:id/view', testimonial_Controler.testimonialShow);
 
 router.post('/testimonial/store', testimonial_Controler.testimonialStore);
 
@@ -70,7 +70,7 @@ router.get('/contact/:id/edit', contact_Controler.contactEdit);
 
 router.delete('/contact/:id/delete', contact_Controler.contactDelete);
 
-router.get('/contact/:id/show', contact_Controler.contactShow);
+router.get('/contact/:id/view', contact_Controler.contactShow);
 
 router.post('/contact/store', contact_Controler.contactStore);
 
