@@ -33,8 +33,15 @@ module.exports = {
         res.render('index', { title: 'Blog edit', layout: 'backend/layout' }),
 
     //Blog Delete
-    delete: (req, res, next) =>
-        res.render('index', { title: 'Blog delete', layout: 'backend/layout' }),
+    delete: (req, res, next) =>{
+        BlogModel.findByIdAndRemove(req.params.id).then(()=>{
+            console.log("deleted");
+        }).catch((error)=>{
+            console.log("Could not deleted due to" +error);
+        })
+        res.redirect("/admin/blog")
+        // res.render('index', { title: 'Blog delete', layout: 'backend/layout' }),
+    },
 
     //Blog Show
     show: (req, res, next) => {
