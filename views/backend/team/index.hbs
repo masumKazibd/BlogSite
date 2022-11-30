@@ -19,26 +19,26 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Tittle</th>
-            <th>Details</th>
+            <th>Name</th>
+            <th>Designation</th>
             <th>Image</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {{#each data}}
+          {{!-- {{#each data}} --}}
           <tr>
             <td>#</td>
             <td>{{title}}</td>
-            <td>{{details}}</td>
+            <td>{{biography}}</td>
             <td> <img src="/{{image}}" alt="" height="50px" width="50px"> </td>
             <td>
-              <a href="/admin/blog/{{id}}/edit" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-              <a href="/admin/blog/{{id}}/view" class="btn btn-outline-success btn-sm"><i class="bi bi-eye-fill"></i></a>
-              <a href="/admin/blog/{{id}}/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
+              <a href="/admin/team/{{id}}/edit" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+              <a href="/admin/team/{{id}}/view" class="btn btn-outline-success btn-sm"><i class="bi bi-eye-fill"></i></a>
+              <a href="/admin/team/{{id}}/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
             </td>
           </tr>
-          {{/each}}
+          {{!-- {{/each}} --}}
         </tbody>
       </table>
     </div>

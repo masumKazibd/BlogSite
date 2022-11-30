@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
 
-const TeamSchema = new mongoose.Schema({
-    title: {
+module.exports = mongoose.model("Team", new mongoose.Schema({
+    name: {
         type: String,
         required: true,
     },
-    designaition: {
+    designation: {
         type: String,
         required: true,
     },
-    details: {
+    biography: {
         type: String,
         required: true,
     },
@@ -19,6 +19,4 @@ const TeamSchema = new mongoose.Schema({
     },
 
 })
-
-const Team = mongoose.model("Team", TeamSchema);
-module.export = Team;
+);

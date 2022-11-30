@@ -1,0 +1,71 @@
+<body>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Testimonail</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/team">testimonial</a></li>
+          <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+
+        <div class="card shadow">
+          <div class="card-body">
+            <h5 class="card-title">Add New Testimonail</h5>
+
+            <!-- General Form Elements -->
+            <form method="post" action="/admin/testimonial/store" enctype="multipart/form-data">
+              <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Employee Name</label>
+                <div class="col-sm-10">
+                  <input type="text" name="name" placeholder="Full Name" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="designation" class="col-sm-2 col-form-label">Designation</label>
+                <div class="col-sm-10">
+                  <input type="text" name="designation" placeholder="Designation" class="form-control">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="biography" class="col-sm-2 col-form-label">Biography</label>
+                <div class="col-sm-10">
+                  <textarea type="text" class="form-control" name="biography" placeholder="Write your Employee Biography"
+                    style="height: 100px"></textarea>
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="image" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" name="image">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <div class="d-flex justify-content-center">
+
+                  <button type="submit" class="btn btn-outline-success m-2 shadow">Post</button>
+                  <button type="reset" class="btn btn-outline-danger m-2 shadow">Reset</button>
+                </div>
+              </div>
+
+            </form><!-- End General Form Elements -->
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+</body>

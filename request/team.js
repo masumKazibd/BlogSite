@@ -1,10 +1,10 @@
 const { check } = require('express-validator');
 
 exports.store = [
-    check('title', "Invalid title").not().isEmpty().trim(),
+    check('name', "Invalid name").not().isEmpty().trim(),  
     check('designation', "Invalid designation").not().isEmpty().trim(),
     check('biography', "Invalid biography").not().isEmpty().trim(),
-    check('image', "Invalid image")
+    check('image', "Invalid image").not().isEmpty().trim(),
 ];
 
 // exports.update = [

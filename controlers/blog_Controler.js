@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const BlogModel = require('../models/blog');
+const fs=require("fs");
 
 module.exports = {
     //blog controller Start
@@ -29,15 +30,26 @@ module.exports = {
         res.render('backend/blog/create', { title: 'Blog Create', layout: 'backend/layout' }),
 
     //Blog Edit
-    edit: (req, res, next) =>
-        res.render('index', { title: 'Blog edit', layout: 'backend/layout' }),
+    edit: (req, res, next) =>{
+
+        // res.render('index', { title: 'Blog edit', layout: 'backend/layout' }),
+    },
 
     //Blog Delete
     delete: (req, res, next) =>{
-        BlogModel.findByIdAndRemove(req.params.id).then(()=>{
-            console.log("deleted");
-        }).catch((error)=>{
-            console.log("Could not deleted due to" +error);
+        BlogModel.findByIdAndRemove(req.params.id,(err,blog)=>{
+
+            if(err){
+                console.log("Could not deleted.");
+            }
+            // delete file permanantly
+            try {
+                fs.unlink("public/"+blog.image,()=>{
+                    console.log("File deleted===================");
+                })
+            } catch (error) {
+                console.log("Something went wrong====================");
+            }
         })
         res.redirect("/admin/blog")
         // res.render('index', { title: 'Blog delete', layout: 'backend/layout' }),
