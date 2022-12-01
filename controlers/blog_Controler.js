@@ -31,8 +31,17 @@ module.exports = {
 
     //Blog Edit
     edit: (req, res, next) =>{
-
-        // res.render('index', { title: 'Blog edit', layout: 'backend/layout' }),
+        BlogModel.findById(req.params.id)
+        .then((blog)=>{
+            const details={
+                title:blog.title,
+                slug:blog.slug,
+                id:blog._id,
+                details:blog.details,
+                image:blog.image
+            }
+        res.render('backend/blog/edit', { title: 'Blog edit', layout: 'backend/layout', blog:details });
+        })
     },
 
     //Blog Delete
@@ -94,9 +103,10 @@ module.exports = {
 
         sampleFile.mv('public/' + filePath, function (err) {
             if (err)
-                return res.status(500).send(err);
+            //     return res.status(500).send(err);
 
-            res.send('File Uploaded!');
+            // res.send('File Uploaded!');
+            res.redirect("/admin/blog")
         });
 
 
@@ -121,8 +131,37 @@ module.exports = {
     },
 
     //Blog Update
-    update: (req, res, next) =>
-        res.render('index', { title: 'Update Blog', layout: 'backend/layout' })
+    update: (req, res, next) =>{
+        const errors=validationResult(req);
+        if(!errors.isEmpty()){
+            return res.json({errors:errors.mapped()});
+        }
+        let sampleFile;
+        if (!req.files || Object.keys(req.files).length === 0) {
+            return res.status(400).send('No files were uploaded.');
+        }
+
+        // The name of the input field (i.e "sampleFile") is used to retrive the upload file
+        sampleFile = req.files.image;
+        let rnd=new Date().valueOf();
+        let filePath='upload/' +rnd+sampleFile.name;
+        
+        // Use the mv() method to place the file somewhere on your server
+        sampleFile.mv('public/'+filePath, function(err){
+            if(err)
+            res.redirect("/admin/blog/create");
+        });
+
+        BlogModel.findByIdAndUpdate(req.params.id,{
+            title:req.body.title,
+            slug:req.body.slug,
+            details:req.body.details,
+            image:filePath
+        },(err,blog)=>{
+            res.redirect("/admin/blogs");
+        });
+        // res.render('index', { title: 'Update Blog', layout: 'backend/layout' })
+    }
     //blog controller End
 
 }
