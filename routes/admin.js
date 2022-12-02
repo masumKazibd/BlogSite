@@ -25,7 +25,7 @@ router.get('/blog/:id/view', blog_Controler.show);
 
 router.post('/blog/store', BlogRequest.store, blog_Controler.store);
 
-router.put('/blog/:id/update', blog_Controler.update);
+router.post('/blog/:id/update', blog_Controler.update);
 
 
 /* Route Team page. */
@@ -41,7 +41,7 @@ router.get('/team/:id/view', team_Controler.teamShow);
 
 router.post('/team/store', team_Controler.teamStore);
 
-router.put('/team/:id/update', team_Controler.teamUpdate);
+router.post('/team/:id/update', team_Controler.teamUpdate);
 
 //   Route Testomonial page. 
 
@@ -57,7 +57,7 @@ router.get('/testimonial/:id/view', testimonial_Controler.testimonialShow);
 
 router.post('/testimonial/store', testimonial_Controler.testimonialStore);
 
-router.put('/testimonial/:id/update', testimonial_Controler.testimonialUpdate);
+router.post('/testimonial/:id/update', testimonial_Controler.testimonialUpdate);
 
 
 //   Route Contact us page. 
@@ -74,7 +74,7 @@ router.get('/contact/:id/view', contact_Controler.contactShow);
 
 router.post('/contact/store', contact_Controler.contactStore);
 
-router.put('/contact/:id/update', contact_Controler.contactUpdate);
+router.post('/contact/:id/update', contact_Controler.contactUpdate);
 
 
 //   /* Route Social Media Link page. */

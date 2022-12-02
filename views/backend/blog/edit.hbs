@@ -21,7 +21,7 @@
             <h5 class="card-title">Post a new Blog</h5>
 
             <!-- General Form Elements -->
-            <form method="post" action="/admin/blog/store" enctype="multipart/form-data">
+            <form method="POST" action="/admin/blog/{{blog.id}}/update" enctype="multipart/form-data">
               <div class="row mb-3">
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
@@ -54,7 +54,7 @@
               <div class="row mb-3">
                 <div class="d-flex justify-content-center">
 
-                  <button type="submit" class="btn btn-outline-success m-2 shadow">Post</button>
+                  <button type="submit" class="btn btn-outline-success m-2 shadow">Update</button>
                   <button type="reset" class="btn btn-outline-danger m-2 shadow">Reset</button>
                 </div>
               </div>

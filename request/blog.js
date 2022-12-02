@@ -7,9 +7,9 @@ exports.store = [
     check('image', "Invalid image")
 ];
 
-// exports.update = [
-//     check('title', "Invalid title").not().isEmpty().trim(),
-//     check('slug', "Invalid slug".not().isEmpty().trim()),
-//     check('details', "Invalid title".not().isEmpty().trim()),
-//     check('image', "Invalid image")
-// ];
+exports.update = [
+    check('title', "Invalid title").not().isEmpty().trim(),
+    check('slug', "Invalid slug").not().isEmpty().trim(),
+    check('details', "Invalid title").not().isEmpty().trim(),
+    check('image', "Invalid image")
+];
