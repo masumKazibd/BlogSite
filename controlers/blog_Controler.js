@@ -21,7 +21,7 @@ module.exports = {
                     image: Element.image
                 });
             });
-            res.render('backend/blog/index', { title: 'Blog List', layout: 'backend/layout', data: blogs });
+            res.render('backend/blog/index', { title: 'Blog List', layout: 'backend/layout', blog: blogs });
         });
     },
 

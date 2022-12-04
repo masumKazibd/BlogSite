@@ -4,7 +4,7 @@ exports.store = [
     check('name', "Invalid name").not().isEmpty().trim(),  
     check('designation', "Invalid designation").not().isEmpty().trim(),
     check('biography', "Invalid biography").not().isEmpty().trim(),
-    check('image', "Invalid image").not().isEmpty().trim(),
+    check('image', "Invalid image")
 ];
 
 // exports.update = [

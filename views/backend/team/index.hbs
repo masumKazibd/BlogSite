@@ -21,15 +21,17 @@
             <th>#</th>
             <th>Name</th>
             <th>Designation</th>
+            <th>Biography</th>
             <th>Image</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {{!-- {{#each data}} --}}
+          {{#each team}}
           <tr>
             <td>#</td>
-            <td>{{title}}</td>
+            <td>{{name}}</td>
+            <td>{{designation}}</td>
             <td>{{biography}}</td>
             <td> <img src="/{{image}}" alt="" height="50px" width="50px"> </td>
             <td>
@@ -38,7 +40,7 @@
               <a href="/admin/team/{{id}}/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
             </td>
           </tr>
-          {{!-- {{/each}} --}}
+          {{/each}}
         </tbody>
       </table>
     </div>
