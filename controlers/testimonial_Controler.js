@@ -1,3 +1,4 @@
+const { validationResult } = require('express-validator');
 const TestimonialModel = require('../models/testimonial');
 
 module.exports = {
@@ -17,8 +18,9 @@ module.exports = {
     testimonialShow: (req, res, next) =>
         res.render('backend/testimonial/view', { title: 'Blog Create', layout: 'backend/layout' }),
 
-    testimonialStore: (req, res, next) =>
-        res.render('backend/testimonial/store', { title: 'Blog Create', layout: 'backend/layout' }),
+    testimonialStore: (req, res, next) => {
+        
+    },
 
     testimonialUpdate: (req, res, next) =>
         res.render('backend/testimonial/update', { title: 'Blog Create', layout: 'backend/layout' }),

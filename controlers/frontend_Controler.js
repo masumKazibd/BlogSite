@@ -1,11 +1,64 @@
 const config = require('../config/index');
+const TeamModel = require('../models/team');
+const BlogModel = require('../models/blog');
 
 module.exports={
-    home: (req, res, next) =>
-        res.render('frontend/index', { title: 'Home' }),
-    
-    team: (req, res, next) =>
-        res.render('frontend/team', { title: 'Meet our team' }),
+    home: (req, res, next) =>  {
+        // blog list
+        BlogModel.find((err, docs) => {
+            if (err) {
+                return res.json({ error: "Something went wrong!" + err })
+            }
+            // return res.json({ blogs: docs });
+            const blogs = [];
+            docs.forEach(Element => {
+                blogs.push({
+                    title: Element.title,
+                    details: Element.details,
+                    id: Element._id,
+                    image: Element.image
+                });
+            });
+            res.render('frontend/index', { title: 'home', blog: blogs });
+        });
+    },
+
+    blogPost: (req, res, next) => {
+        BlogModel.findById(req.params.id)
+            .then((blog) => {
+                // res.json({ "blog": blog });
+                const details = {
+                    title: blog.title,
+                    details: blog.details,
+                    image: blog.image
+                }
+                res.render('frontend/singlePost', { title: 'Blog Post', blog: details });
+            })
+            .catch((err) => {
+                res.json({ "error": "Something went wrong" });
+            })
+    },
+
+    team: (req, res, next) =>{
+        TeamModel.find((err, docs) => {
+            if (err) {
+                return res.json({ error: "Something Went Wrong" + err })
+            }
+            // return res.json({ teams: docs });
+
+            const teams = [];
+            docs.forEach(Element => {
+                teams.push({
+                    title: Element.title,
+                    designation: Element.designation,
+                    biography: Element.biography,
+                    id: Element._id,
+                    image: Element.image
+                });
+            });
+            res.render('frontend/team', { title: 'Meet our team', team: teams })
+        });
+    },
 
     blog: (req, res, next) =>
         res.render('frontend/blog', { title: 'Read Our Blog' }),

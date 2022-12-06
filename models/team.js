@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 module.exports = mongoose.model("Team", new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
