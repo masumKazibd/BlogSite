@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', pageControler.home);
-router.get('/:id', pageControler.blogPost);
+router.get('/:id/read', pageControler.blogPost);
 router.get('/team', pageControler.team);
 router.get('/blog', pageControler.blog);
 router.get('/contact-us', pageControler.contact);
