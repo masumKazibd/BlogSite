@@ -79,7 +79,7 @@ module.exports = {
         // Data Validiation
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.json({ errors: errors.mapped() });
+            return res.render('backend/testimonial/create',{ errors: errors.mapped() });
         }
 
         let sampleFile;
@@ -95,11 +95,7 @@ module.exports = {
         // Use the mv() method to place the file somewhere on your server
 
         sampleFile.mv('public/' + filePath, function (err) {
-            if (err)
-                //     return res.status(500).send(err);
 
-                res.send('File Uploaded!');
-            // res.redirect("/admin/testimonial")
         });
 
         const testimonial = new TestimonialModel({
@@ -113,9 +109,10 @@ module.exports = {
 
         testimonial.save((err, newTestimonial) => {
             if (err) {
-                return res.json({ error: "Something went wrong!" + err })
+                return res.render("backend/testionial/create", { error: "Something went wrong!" + err })
             }
-            // return res.json({ testimonial: newTestimonial });
+
+            return res.redirect("/admin/testimonial");
         });
     },
     testimonialUpdate: (req, res, next) =>{

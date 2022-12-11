@@ -7,6 +7,10 @@ const contact_Controler = require('../controlers/contact_Controler');
 const about_Controler = require('../controlers/about_Controler');
 
 const BlogRequest = require('../request/blog');
+const TeamRequest = require('../request/team');
+const TestimonialRequest = require('../request/testimonial');
+const AboutRequest = require('../request/about');
+
 
 var router = express.Router();
 
@@ -41,7 +45,7 @@ router.get('/team/:id/delete', team_Controler.teamDelete);
 
 router.get('/team/:id/view', team_Controler.teamShow);
 
-router.post('/team/store', team_Controler.teamStore);
+router.post('/team/store', TeamRequest.store, team_Controler.teamStore);
 
 router.post('/team/:id/update', team_Controler.teamUpdate);
 
@@ -57,7 +61,7 @@ router.get('/testimonial/:id/delete', testimonial_Controler.testimonialDelete);
 
 router.get('/testimonial/:id/view', testimonial_Controler.testimonialShow);
 
-router.post('/testimonial/store', testimonial_Controler.testimonialStore);
+router.post('/testimonial/store', TestimonialRequest.store, testimonial_Controler.testimonialStore);
 
 router.post('/testimonial/:id/update', testimonial_Controler.testimonialUpdate);
 
@@ -90,7 +94,7 @@ router.get('/about/:id/delete', about_Controler.aboutDelete);
 
 router.get('/about/:id/view', about_Controler.aboutShow);
 
-router.post('/about/store', about_Controler.aboutStore);
+router.post('/about/store', AboutRequest.store, about_Controler.aboutStore);
 
 router.post('/about/:id/update', about_Controler.aboutUpdate);
 //   /* Route Social Media Link page. */

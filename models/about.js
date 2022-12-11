@@ -21,4 +21,4 @@ const AboutSchema = new mongoose.Schema({
 })
 
 const About = mongoose.model("about", AboutSchema);
-module.export = About;
+module.exports = About;
