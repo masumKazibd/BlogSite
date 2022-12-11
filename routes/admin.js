@@ -4,6 +4,8 @@ const blog_Controler = require('../controlers/blog_Controler');
 const team_Controler = require('../controlers/team_Controler');
 const testimonial_Controler = require('../controlers/testimonial_Controler');
 const contact_Controler = require('../controlers/contact_Controler');
+const about_Controler = require('../controlers/about_Controler');
+
 const BlogRequest = require('../request/blog');
 
 var router = express.Router();
@@ -76,7 +78,21 @@ router.post('/contact/store', contact_Controler.contactStore);
 
 router.post('/contact/:id/update', contact_Controler.contactUpdate);
 
+//  about page. 
 
+router.get('/about', about_Controler.aboutIndex);
+
+router.get('/about/create', about_Controler.aboutCreate);
+
+router.get('/about/:id/edit', about_Controler.aboutEdit);
+
+router.get('/about/:id/delete', about_Controler.aboutDelete);
+
+router.get('/about/:id/view', about_Controler.aboutShow);
+
+router.post('/about/store', about_Controler.aboutStore);
+
+router.post('/about/:id/update', about_Controler.aboutUpdate);
 //   /* Route Social Media Link page. */
 
 

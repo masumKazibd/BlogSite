@@ -18,8 +18,6 @@ const AboutSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    
-
 })
 
 const About = mongoose.model("about", AboutSchema);
