@@ -22,31 +22,43 @@
 
             <!-- General Form Elements -->
             <form method="post" action="/admin/about/store" enctype="multipart/form-data">
+
               <div class="row mb-3">
-                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <label for="image1" class="col-sm-2 col-form-label">First Image</label>
                 <div class="col-sm-10">
-                  <input type="text" name="title" placeholder="Blog Title" class="form-control">
-                </div>
-              </div>
-              <div class="row mb-3">
-                <label for="slug" class="col-sm-2 col-form-label">Slug</label>
-                <div class="col-sm-10">
-                  <input type="text" name="slug" placeholder="Slug" class="form-control">
+                  <input class="form-control" type="file" name="image1">
                 </div>
               </div>
 
+
               <div class="row mb-3">
-                <label for="details" class="col-sm-2 col-form-label">Details</label>
+                <label for="history" class="col-sm-2 col-form-label">Company History</label>
                 <div class="col-sm-10">
-                  <textarea type="text" class="form-control" name="details" placeholder="Write about your blog"
+                  <textarea type="text" class="form-control" name="history" placeholder="Write about your Company History"
                     style="height: 100px"></textarea>
                 </div>
               </div>
 
-              <div class="row mb-3">
-                <label for="image" class="col-sm-2 col-form-label">Image</label>
+
+              {{!-- <div class="row mb-3">
+                <label for="history" class="col-sm-2 col-form-label">Company History</label>
                 <div class="col-sm-10">
-                  <input class="form-control" type="file" name="image">
+                  <input type="text" name="history" placeholder="Company history" class="form-control">
+                </div>
+              </div> --}}
+
+              <div class="row mb-3">
+                <label for="image2" class="col-sm-2 col-form-label">Second Image</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" name="image2">
+                </div>
+              </div>
+
+              <div class="row mb-3">
+                <label for="mission" class="col-sm-2 col-form-label">Company mission</label>
+                <div class="col-sm-10">
+                  <textarea type="text" class="form-control" name="mission" placeholder="Write about your Company Mission"
+                    style="height: 100px"></textarea>
                 </div>
               </div>
 

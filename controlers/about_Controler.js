@@ -112,9 +112,9 @@ module.exports = {
 
         // Send data to Database
         const about = new AboutModel({
-            title: req.body.title,
-            slug: req.body.slug,
-            details: req.body.details,
+            image1: req.body.filePath,
+            history: req.body.history,
+            mission: req.body.mission,
             image: filePath
         });
 
