@@ -6,7 +6,7 @@ const AboutModel = require('../models/about');
 
 module.exports={
     home: (req, res, next) =>  {
-        // Testimonial list
+        // Show Blogs on Home Page
         BlogModel.find((err, docs) => {
             if (err) {
                 return res.json({ error: "Something went wrong!" + err })
