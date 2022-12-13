@@ -1,13 +1,15 @@
-/**
-* Template Name: ZenBlog - v1.2.1
-* Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
-* Author: BootstrapMade.com
-* License: https:///bootstrapmade.com/license/
-*/
+/* Testimonial Page Design CSS Start*/
 
-/**
-* Check out variables.css for easy customization of colors, typography, and other repetitive properties
-*/
+.testimonial-design{
+  background-color: aqua;
+  /* margin-top: 150px; */
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+/* End of Testimonial Page Design Css */
+
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/

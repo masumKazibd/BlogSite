@@ -1,71 +1,43 @@
-  <main id="main">
-    <!-- ======= Hero Slider Section ======= -->
-  <section id="hero-slider" class="hero-slider">
-    <div class="container-md" data-aos="fade-in">
-      <div class="row">
-        <div class="col-12">
-          <div class="swiper sliderFeaturedPosts">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end"
-                  style="background-image: url('image/frontend/post-slide-1.jpg');">
-                  <div class="img-bg-inner">
-                    <h2>The Best Homemade Masks for Face (keep the Pimples Away)</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                      minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore
-                      repudiandae quidem necessitatibus rem atque.</p>
-                  </div>
-                </a>
-              </div>
+<div class="testimonial-design">
 
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end"
-                  style="background-image: url('image/frontend/post-slide-2.jpg');">
-                  <div class="img-bg-inner">
-                    <h2>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                      minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore
-                      repudiandae quidem necessitatibus rem atque.</p>
-                  </div>
-                </a>
-              </div>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
 
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end"
-                  style="background-image: url('image/frontend/post-slide-3.jpg');">
-                  <div class="img-bg-inner">
-                    <h2>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                      minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore
-                      repudiandae quidem necessitatibus rem atque.</p>
-                  </div>
-                </a>
-              </div>
 
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end"
-                  style="background-image: url('image/frontend/post-slide-4.jpg');">
-                  <div class="img-bg-inner">
-                    <h2>9 Half-up/half-down Hairstyles for Long and Medium Hair</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae
-                      minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore
-                      repudiandae quidem necessitatibus rem atque.</p>
-                  </div>
-                </a>
+      <div class="carousel-item active">
+              {{#each testimonial}}
+        {{!-- Card Start --}}
+        <div class="d-flex justify-content-center shadow">
+          <div class="card mb-3" style="width: 75%">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="/{{image}}" class="img-fluid rounded-start" alt="{{title}}">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h1 class="card-title">{{title}}</h1>
+                  <p class="card-text"><small class="text-muted">{{designation}}</small></p>
+                  <p class="card-text">{{details}}</p>
+                </div>
               </div>
             </div>
-            <div class="custom-swiper-button-next">
-              <span class="bi-chevron-right"></span>
-            </div>
-            <div class="custom-swiper-button-prev">
-              <span class="bi-chevron-left"></span>
-            </div>
-
-            <div class="swiper-pagination"></div>
           </div>
         </div>
-      </div>
-    </div>
-  </section><!-- End Hero Slider Section -->
+      {{/each}}
 
-    </main>
+        {{!-- End of card --}}
+      </div>
+
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
