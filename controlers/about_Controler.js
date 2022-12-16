@@ -53,9 +53,14 @@ module.exports = {
             }
             // delete file permanantly
             try {
-                fs.unlink("public/" + about.image, () => {
+                fs.unlink("public/" + about.image1, () => {
                     console.log("File deleted===================");
                 })
+
+                fs.unlink("public/" + about.image2, () => {
+                    console.log("File deleted===================");
+                })
+                
             } catch (error) {
                 console.log("Something went wrong====================");
             }
@@ -70,9 +75,10 @@ module.exports = {
             .then((about) => {
                 // res.json({ "about": About });
                 const details = {
-                    title: about.title,
-                    details: about.details,
-                    image: about.image
+                    history: about.history,
+                    image1: about.image1,
+                    mission: about.mission,
+                    image2: about.image2
                 }
                 res.render('backend/about/show', { title: 'About Show', layout: 'backend/layout', about: details });
             })
@@ -89,33 +95,40 @@ module.exports = {
             return res.json({ errors: errors.mapped() });
         }
 
-        let sampleFile;
+        let sampleFile1, sampleFile2;
         if (!req.files || Object.keys(req.files).length === 0) {
             return res.status(400).send('No files were uploaded.');
         }
 
         // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
-        sampleFile = req.files.image;
+        sampleFile1 = req.files.image1;
+        sampleFile2 = req.files.image2;
         let rnd = new Date().valueOf();
-        let filePath = 'upload/' + rnd + sampleFile.name;
+        let filePath1 = 'upload/' + rnd + sampleFile1.name;
+        let filePath2 = 'upload/' + rnd + sampleFile2.name;
 
         // Use the mv() method to place the file somewhere on your server
 
-        sampleFile.mv('public/' + filePath, function (err) {
+        sampleFile1.mv('public/' + filePath1, function (err) {
             if (err)
                 //     return res.status(500).send(err);
-
                 res.send('File Uploaded!');
-                res.redirect("/admin/about")
+            // res.redirect("/admin/about")
         });
 
+        sampleFile2.mv('public/' + filePath2, function (err) {
+            if (err)
+                //     return res.status(500).send(err);
+                res.send('File Uploaded!');
+            res.redirect("/admin/about")
+        });
 
         // Send data to Database
         const about = new AboutModel({
-            image1: req.body.filePath,
+            image1: filePath1,
             history: req.body.history,
             mission: req.body.mission,
-            image: filePath
+            image2: filePath2
         });
 
         about.save((err, newAbout) => {
@@ -132,38 +145,38 @@ module.exports = {
 
     //About Update
     aboutUpdate: (req, res, next) => {
-        const errors=validationResult(req);
+        const errors = validationResult(req);
 
-        if(!errors.isEmpty()){
-            return res.json({errors:errors.mapped()});
+        if (!errors.isEmpty()) {
+            return res.json({ errors: errors.mapped() });
         }
-        let sampleFile,filePath;
+        let sampleFile, filePath;
 
         if (req.files) {
             // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
             sampleFile = req.files.image;
-            let rnd=new Date().valueOf();
-            filePath='upload/' +rnd+sampleFile.name;
+            let rnd = new Date().valueOf();
+            filePath = 'upload/' + rnd + sampleFile.name;
             // Use the mv() method to place the file somewhere on your server
-            sampleFile.mv('public/'+filePath, function(err) {
+            sampleFile.mv('public/' + filePath, function (err) {
                 if (err)
-                res.redirect("/admin/about/"+req.params.id+"/edit");
+                    res.redirect("/admin/about/" + req.params.id + "/edit");
             });
         }
-        const aboutObj={
-            title:req.body.title,
-            slug:req.body.slug,
-            details:req.body.details
+        const aboutObj = {
+            title: req.body.title,
+            slug: req.body.slug,
+            details: req.body.details
         };
 
-        if(filePath){
-            aboutObj.image=filePath;
+        if (filePath) {
+            aboutObj.image = filePath;
         }
 
         // /
-        AboutModel.findByIdAndUpdate(req.params.id,aboutObj,(err,about)=>{
-            if(err){
-                res.redirect("/admin/about/"+req.params.id+"/edit");
+        AboutModel.findByIdAndUpdate(req.params.id, aboutObj, (err, about) => {
+            if (err) {
+                res.redirect("/admin/about/" + req.params.id + "/edit");
             }
             res.redirect("/admin/about");
         });

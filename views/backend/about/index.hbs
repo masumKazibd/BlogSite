@@ -1,7 +1,7 @@
 <main id="main" class="main">
 
   <div class="pagetitle">
-    <h1>Blogs</h1>
+    <h1>About</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/admin">Home</a></li>
@@ -11,7 +11,7 @@
   </div><!-- End Page Title -->
 
     <div class="d-flex justify-content-center">
-            <a href="/admin/blog/create" class="btn btn-primary"><i class="bi bi-plus-circle "></i> Post A Blog</a>
+            <a href="/admin/about/create" class="btn btn-primary"><i class="bi bi-plus-circle "></i> About </a>
     </div>
   <section>
     <div class="container container-fluid shadow">
@@ -19,23 +19,25 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Tittle</th>
-            <th>Details</th>
-            <th>Image</th>
+            <th>Company History</th>
+            <th>First Image</th>
+            <th>Mission</th>
+            <th>Second Image</th>
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {{#each blog}}
+          {{#each about}}
           <tr>
             <td>#</td>
-            <td>{{title}}</td>
-            <td>{{details}}</td>
-            <td> <img src="/{{image}}" alt="" height="50px" width="50px"> </td>
+            <td>{{history}}</td>
+            <td> <img src="/{{image1}}" alt="" height="50px" width="50px"> </td>
+            <td>{{mission}}</td>
+            <td> <img src="/{{image2}}" alt="" height="50px" width="50px"> </td>
             <td>
-              <a href="/admin/blog/{{id}}/edit" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-              <a href="/admin/blog/{{id}}/view" class="btn btn-outline-success btn-sm"><i class="bi bi-eye-fill"></i></a>
-              <a href="/admin/blog/{{id}}/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
+              <a href="/admin/about/{{id}}/edit" class="btn btn-outline-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+              <a href="/admin/about/{{id}}/view" class="btn btn-outline-success btn-sm"><i class="bi bi-eye-fill"></i></a>
+              <a href="/admin/about/{{id}}/delete" class="btn btn-outline-danger btn-sm"><i class="bi bi-trash3-fill"></i></a>
             </td>
           </tr>
           {{/each}}

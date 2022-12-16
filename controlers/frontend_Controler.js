@@ -68,9 +68,27 @@ module.exports={
     contact: (req, res, next) =>
         res.render('frontend/contact', { title: 'Contact with us' }),
    
-    about: (req, res, next) =>
-        res.render('frontend/about', { title: 'About Us' }),
-    
+    about: (req, res, next) =>{
+        // about list
+        AboutModel.find((err, docs) => {
+            if (err) {
+                return res.json({ error: "Something went wrong!" + err })
+            }
+            // return res.json({ abouts: docs });
+            const abouts = [];
+            docs.forEach(Element => {
+                abouts.push({
+                    image1: Element.image1,
+                    history: Element.history,
+                    id: Element._id,
+                    image2: Element.image2,
+                    mission: Element.mission
+                });
+            });
+            res.render('frontend/about', { title: 'About Us', about: abouts });
+        });
+    },   
+     
     testimonial: (req, res, next) =>{
         TestimonialModel.find((err, docs) => {
             if (err) {
