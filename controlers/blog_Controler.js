@@ -17,6 +17,8 @@ module.exports = {
                 blogs.push({
                     title: Element.title,
                     details: Element.details,
+                    catagory: Element.catagory,
+                    date: Element.date,
                     id: Element._id,
                     image: Element.image
                 });
@@ -36,6 +38,8 @@ module.exports = {
                 const details = {
                     title: blog.title,
                     slug: blog.slug,
+                    date: blog.date,
+                    catagory: blog.catagory,
                     id: blog._id,
                     details: blog.details,
                     image: blog.image
@@ -72,6 +76,7 @@ module.exports = {
                 const details = {
                     title: blog.title,
                     details: blog.details,
+                    catagory: blog.catagory,
                     image: blog.image
                 }
                 res.render('backend/blog/show', { title: 'Blog Show', layout: 'backend/layout', blog: details });
@@ -114,6 +119,8 @@ module.exports = {
         const blog = new BlogModel({
             title: req.body.title,
             slug: req.body.slug,
+            catagory: req.body.catagory,
+            date: req.body.date,
             details: req.body.details,
             image: filePath
         });
@@ -153,7 +160,9 @@ module.exports = {
         const blogObj={
             title:req.body.title,
             slug:req.body.slug,
-            details:req.body.details
+            details:req.body.details,
+            catagory:req.body.catagory,
+            date:req.body.date
         };
 
         if(filePath){
