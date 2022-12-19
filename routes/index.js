@@ -2,6 +2,10 @@ var express = require('express');
 const pageControler = require('../controlers/frontend_Controler');
 var router = express.Router();
 
+// Middleware
+const {menus}=require('../middleware/menuMiddleware');
+router.use(menus);
+
 /* GET home page. */
 router.get('/', pageControler.home);
 router.get('/:id/read', pageControler.blogPost);
