@@ -5,11 +5,17 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const {engine}=require('express-handlebars')
 const fileUpload = require('express-fileupload');
+// passport authentication
+var passport = require("passport"),
+  session = require('express-session');
+require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var adminRouter = require('./routes/admin');
 require('./config/database'); 
+
+const {SECRATE} = require('./config/index');
 
 var app = express();
 // file upload
@@ -26,6 +32,23 @@ app.engine('.hbs', engine(
     partialsDir: __dirname + '/views/partials'
   }
 ))
+
+// passport setup 
+// setup passpot session
+
+app.use(session({
+  name: 'secrate-session',
+  secret: SECRATE,
+  saveUninitialized: true,
+  resave: true,
+  cookie:{
+    maxAge:1000*60*60*24
+  }
+}));
+
+//  initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(logger('dev'));
