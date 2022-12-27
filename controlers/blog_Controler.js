@@ -9,7 +9,7 @@ module.exports = {
         // blog list
         BlogModel.find((err, docs) => {
             if (err) {
-                return res.json({ error: "Something went wrong!" + err })
+                res.render("error:", { errorStatus: 500 });
             }
             // return res.json({ blogs: docs });
             const blogs = [];
@@ -53,19 +53,15 @@ module.exports = {
         BlogModel.findByIdAndRemove(req.params.id, (err, blog) => {
 
             if (err) {
-                console.log("Could not deleted.");
+                res.render("error", { errorStatus: 500 })
             }
             // delete file permanantly
             try {
-                fs.unlink("public/" + blog.image, () => {
-                    console.log("File deleted===================");
-                })
+                fs.unlink("public/" + blog.imgae, () => { });
             } catch (error) {
-                console.log("Something went wrong====================");
             }
         })
         res.redirect("/admin/blog")
-        // res.render('index', { title: 'Blog delete', layout: 'backend/layout' }),
     },
 
     //Blog Show
@@ -82,7 +78,8 @@ module.exports = {
                 res.render('backend/blog/show', { title: 'Blog Show', layout: 'backend/layout', blog: details });
             })
             .catch((err) => {
-                res.json({ "error": "Something went wrong" });
+                // res.json({ "error": "Something went wrong" });
+                res.render("error", { errorStatus: 500 })
             })
     },
 
@@ -91,28 +88,25 @@ module.exports = {
         // Data Validiation
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.json({ errors: errors.mapped() });
+            // return res.json({ errors: errors.mapped() });
+            return res.render("backend/blog/create", { layout: "backend/layout", errors: errors.mapped() })
         }
 
-        let sampleFile;
+        let sampleFile, filePath;
         if (!req.files || Object.keys(req.files).length === 0) {
-            return res.status(400).send('No files were uploaded.');
-        }
+            // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
+            sampleFile = req.files.image;
+            let rnd = new Date().valueOf();
+            let filePath = 'upload/' + rnd + sampleFile.name;
 
-        // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
-        sampleFile = req.files.image;
-        let rnd = new Date().valueOf();
-        let filePath = 'upload/' + rnd + sampleFile.name;
-
-        // Use the mv() method to place the file somewhere on your server
-
-        sampleFile.mv('public/' + filePath, function (err) {
+            // Use the mv() method to place the file somewhere on your server
+            sampleFile.mv('public/' + filePath, function (err) {
             if (err)
                 //     return res.status(500).send(err);
-
-                res.send('File Uploaded!');
-                res.redirect("/admin/blog")
+                // res.send('File Uploaded!');
+                res.redirect("/admin/blog/create")
         });
+        }
 
 
         // Send data to Database
@@ -127,52 +121,53 @@ module.exports = {
 
         blog.save((err, newBlog) => {
             if (err) {
-                return res.json({ error: "Something went wrong!" + err })
+                // return res.json({ error: "Something went wrong!" + err })
+                res.redirect("/admin/blog/create") 
             }
-            // return res.json({ blog: newBlog });
+            res.redirect("/admin/blogs");
         });
 
         // return res.json(req.body);
-
         // res.render('backend/blog/store', { title: 'Blog Store', layout: 'backend/layout' });
     },
 
     //Blog Update
     update: (req, res, next) => {
-        const errors=validationResult(req);
+        const errors = validationResult(req);
 
-        if(!errors.isEmpty()){
-            return res.json({errors:errors.mapped()});
+        if (!errors.isEmpty()) {
+            // return res.json({ errors: errors.mapped() });
+            return res.render("backend/blog/edit", { layout: "backend/layout", errors: errors.mapped() })
         }
-        let sampleFile,filePath;
+        let sampleFile, filePath;
 
         if (req.files) {
             // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
             sampleFile = req.files.image;
-            let rnd=new Date().valueOf();
-            filePath='upload/' +rnd+sampleFile.name;
+            let rnd = new Date().valueOf();
+            filePath = 'upload/' + rnd + sampleFile.name;
             // Use the mv() method to place the file somewhere on your server
-            sampleFile.mv('public/'+filePath, function(err) {
+            sampleFile.mv('public/' + filePath, function (err) {
                 if (err)
-                res.redirect("/admin/blog/"+req.params.id+"/edit");
+                    res.redirect("/admin/blog/" + req.params.id + "/edit");
             });
         }
-        const blogObj={
-            title:req.body.title,
-            slug:req.body.slug,
-            details:req.body.details,
-            catagory:req.body.catagory,
-            date:req.body.date
+        const blogObj = {
+            title: req.body.title,
+            slug: req.body.slug,
+            details: req.body.details,
+            catagory: req.body.catagory,
+            date: req.body.date
         };
 
-        if(filePath){
-            blogObj.image=filePath;
+        if (filePath) {
+            blogObj.image = filePath;
         }
 
         // /
-        BlogModel.findByIdAndUpdate(req.params.id,blogObj,(err,blog)=>{
-            if(err){
-                res.redirect("/admin/blog/"+req.params.id+"/edit");
+        BlogModel.findByIdAndUpdate(req.params.id, blogObj, (err, blog) => {
+            if (err) {
+                res.redirect("/admin/blog/" + req.params.id + "/edit");
             }
             res.redirect("/admin/blog");
         });

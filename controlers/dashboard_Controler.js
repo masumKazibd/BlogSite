@@ -6,6 +6,8 @@ module.exports = {
     admin: (req, res, next) => {
         res.render('backend/dashboard/index', { title: 'Dashboard', layout: 'backend/layout' });
     //admin dashboard controller End
-
+    // db.collection.aggregate( [
+    //     { $count: "myCount" }
+    //  ])
     },
 }

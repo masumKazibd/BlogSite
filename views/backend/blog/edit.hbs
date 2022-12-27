@@ -26,12 +26,18 @@
                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                 <div class="col-sm-10">
                   <input value="{{blog.title}}" type="text" name="title" placeholder="Blog Title" class="form-control">
+                <b class="text-danger">
+                    {{errors.title.msg}}
+                </b>
                 </div>
               </div>
               <div class="row mb-3">
                 <label for="slug" class="col-sm-2 col-form-label">Slug</label>
                 <div class="col-sm-10">
                   <input value="{{blog.slug}}" type="text" name="slug" placeholder="Slug" class="form-control">
+                <b class="text-danger">
+                    {{errors.slug.msg}}
+                </b>
                 </div>
               </div>
 
@@ -39,10 +45,16 @@
                 <label for="date" class="col-sm-2 col-form-label">Date</label>
                 <div class="col-sm-4">
                   <input value="{{blog.date}}" type="date" name="date" placeholder="date" class="form-control">
+                <b class="text-danger">
+                    {{errors.date.msg}}
+                </b>
                 </div>
                 <label for="catagory" class="col-sm-2 col-form-label">Catagory</label>
                 <div class="col-sm-4">
                   <input value="{{blog.catagory}}" type="text" name="catagory" placeholder="catagory" class="form-control">
+                <b class="text-danger">
+                    {{errors.catagory.msg}}
+                </b>
                 </div>
               </div>
 
@@ -51,6 +63,9 @@
                 <div class="col-sm-10">
                   <textarea type="text" class="form-control" name="details" placeholder="Write about your blog"
                     style="height: 100px">{{blog.details}}"</textarea>
+                <b class="text-danger">
+                    {{errors.details.msg}}
+                </b>
                 </div>
               </div>
 
@@ -59,6 +74,9 @@
                 <div class="col-sm-10">
                   <img src="/{{blog.image}}" width="200px" alt="{{blog.title}}">
                   <input class="form-control" type="file" name="image">
+                <b class="text-danger">
+                    {{errors.image.msg}}
+                </b>
                 </div>
               </div>
 
