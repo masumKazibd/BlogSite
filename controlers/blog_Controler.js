@@ -92,12 +92,12 @@ module.exports = {
             return res.render("backend/blog/create", { layout: "backend/layout", errors: errors.mapped() })
         }
 
-        let sampleFile, filePath;
-        if (!req.files || Object.keys(req.files).length === 0) {
+        let sampleFile,filePath;
+        if (req.files || Object.keys(req.files).length !== 0) {
             // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
             sampleFile = req.files.image;
             let rnd = new Date().valueOf();
-            let filePath = 'upload/' + rnd + sampleFile.name;
+            filePath = 'upload/' +rnd+sampleFile.name;
 
             // Use the mv() method to place the file somewhere on your server
             sampleFile.mv('public/' + filePath, function (err) {
@@ -122,9 +122,9 @@ module.exports = {
         blog.save((err, newBlog) => {
             if (err) {
                 // return res.json({ error: "Something went wrong!" + err })
-                res.redirect("/admin/blog/create") 
+               res.redirect("/admin/blog/create") 
             }
-            res.redirect("/admin/blogs");
+            res.redirect("/admin/blog");
         });
 
         // return res.json(req.body);

@@ -9,9 +9,9 @@ const ContactSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    image: {
+    icon: {
         type: String,
-        required: false,
+        required: true,
     },
 
 })
