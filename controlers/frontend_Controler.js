@@ -4,8 +4,8 @@ const BlogModel = require('../models/blog');
 const TestimonialModel = require('../models/testimonial');
 const AboutModel = require('../models/about');
 
-module.exports={
-    home: (req, res, next) =>  {
+module.exports = {
+    home: (req, res, next) => {
         // Show Blogs on Home Page
         BlogModel.find((err, docs) => {
             if (err) {
@@ -18,6 +18,8 @@ module.exports={
                     title: Element.title,
                     details: Element.details,
                     id: Element._id,
+                    catagory: req.body.catagory,
+                    date: req.body.date,
                     image: Element.image
                 });
             });
@@ -41,7 +43,7 @@ module.exports={
             })
     },
 
-    team: (req, res, next) =>{
+    team: (req, res, next) => {
         TeamModel.find((err, docs) => {
             if (err) {
                 return res.json({ error: "Something Went Wrong" + err })
@@ -64,11 +66,11 @@ module.exports={
 
     blog: (req, res, next) =>
         res.render('frontend/blog', { title: 'Read Our Blog' }),
-   
+
     contact: (req, res, next) =>
         res.render('frontend/contact', { title: 'Contact with us' }),
-   
-    about: (req, res, next) =>{
+
+    about: (req, res, next) => {
         // about list
         AboutModel.find((err, docs) => {
             if (err) {
@@ -87,9 +89,9 @@ module.exports={
             });
             res.render('frontend/about', { title: 'About Us', about: abouts });
         });
-    },   
-     
-    testimonial: (req, res, next) =>{
+    },
+
+    testimonial: (req, res, next) => {
         TestimonialModel.find((err, docs) => {
             if (err) {
                 return res.json({ error: "Something Went Wrong" + err })
