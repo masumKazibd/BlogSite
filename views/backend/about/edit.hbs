@@ -3,11 +3,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>New Blog</h1>
+      <h1>About Section</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin">Home</a></li>
-          <li class="breadcrumb-item"><a href="/admin/blog">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/admin/about">About</a></li>
           <li class="breadcrumb-item active">{{title}}</li>
         </ol>
       </nav>
@@ -18,43 +18,48 @@
 
         <div class="card shadow">
           <div class="card-body">
-            <h5 class="card-title">Post a new Blog</h5>
+            <h5 class="card-title">Add About</h5>
 
             <!-- General Form Elements -->
-            <form method="POST" action="/admin/blog/{{blog.id}}/update" enctype="multipart/form-data">
+            <form method="post" action="/admin/about/{{about.id}}/update" enctype="multipart/form-data">
+
               <div class="row mb-3">
-                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                <label for="image1" class="col-sm-2 col-form-label">First Image</label>
                 <div class="col-sm-10">
-                  <input value="{{blog.title}}" type="text" name="title" placeholder="Blog Title" class="form-control">
+                  <img src="/{{about.image1}}" width="200px" alt="">
+                  <input class="form-control" type="file" name="image1">
                 </div>
               </div>
+
+
               <div class="row mb-3">
-                <label for="slug" class="col-sm-2 col-form-label">Slug</label>
+                <label for="history" class="col-sm-2 col-form-label">Company History</label>
                 <div class="col-sm-10">
-                  <input value="{{blog.slug}}" type="text" name="slug" placeholder="Slug" class="form-control">
+                  <textarea type="text" class="form-control" name="history" placeholder="Write about your Company History"
+                    style="height: 100px">{{about.history}}</textarea>
                 </div>
               </div>
 
               <div class="row mb-3">
-                <label for="details" class="col-sm-2 col-form-label">Details</label>
+                <label for="image2" class="col-sm-2 col-form-label">Second Image</label>
                 <div class="col-sm-10">
-                  <textarea type="text" class="form-control" name="details" placeholder="Write about your blog"
-                    style="height: 100px">{{blog.details}}"</textarea>
+                  <img src="/{{about.image2}}" width="200px" alt="">
+                  <input class="form-control" type="file" name="image2">
                 </div>
               </div>
 
               <div class="row mb-3">
-                <label for="image" class="col-sm-2 col-form-label">Image</label>
+                <label for="mission" class="col-sm-2 col-form-label">Company mission</label>
                 <div class="col-sm-10">
-                  <img src="/{{blog.image}}" width="200px" alt="{{blog.title}}">
-                  <input class="form-control" type="file" name="image">
+                  <textarea type="text" class="form-control" name="mission" placeholder="Write about your Company Mission"
+                    style="height: 100px">{{about.mission}}</textarea>
                 </div>
               </div>
 
               <div class="row mb-3">
                 <div class="d-flex justify-content-center">
 
-                  <button type="submit" class="btn btn-outline-success m-2 shadow">Update</button>
+                  <button type="submit" class="btn btn-outline-success m-2 shadow">Post</button>
                   <button type="reset" class="btn btn-outline-danger m-2 shadow">Reset</button>
                 </div>
               </div>

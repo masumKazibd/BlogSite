@@ -34,11 +34,11 @@ module.exports = {
         AboutModel.findById(req.params.id)
             .then((about) => {
                 const details = {
-                    image1: Element.image1,
-                    history: Element.history,
-                    id: Element._id,
-                    image2: Element.image2,
-                    mission: Element.mission
+                    image1: about.image1,
+                    history: about.history,
+                    id: about._id,
+                    image2: about.image2,
+                    mission: about.mission
                 }
                 res.render('backend/about/edit', { title: 'About edit', layout: 'backend/layout', about: details });
             })
@@ -150,15 +150,21 @@ module.exports = {
         if (!errors.isEmpty()) {
             return res.json({ errors: errors.mapped() });
         }
-        let sampleFile, filePath;
+        let sampleFile1, sampleFile2, filePath1, filePath2;
 
         if (req.files) {
             // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-            sampleFile = req.files.image;
+            sampleFile1 = req.files.image1;
+            sampleFile2 = req.files.image2;
             let rnd = new Date().valueOf();
-            filePath = 'upload/' + rnd + sampleFile.name;
+            filePath1 = 'upload/' + rnd + sampleFile1.name;
+            filePath2 = 'upload/' + rnd + sampleFile2.name;
             // Use the mv() method to place the file somewhere on your server
-            sampleFile.mv('public/' + filePath, function (err) {
+            sampleFile1.mv('public/' + filePath1, function (err) {
+                if (err)
+                    res.redirect("/admin/about/" + req.params.id + "/edit");
+            });
+            sampleFile2.mv('public/' + filePath2, function (err) {
                 if (err)
                     res.redirect("/admin/about/" + req.params.id + "/edit");
             });
@@ -169,8 +175,9 @@ module.exports = {
             details: req.body.details
         };
 
-        if (filePath) {
-            aboutObj.image = filePath;
+        if (filePath1, filePath2) {
+            aboutObj.image1 = filePath1;
+            aboutObj.image2 = filePath2;
         }
 
         // /

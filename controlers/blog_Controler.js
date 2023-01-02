@@ -73,6 +73,7 @@ module.exports = {
                     title: blog.title,
                     details: blog.details,
                     catagory: blog.catagory,
+                    date: blog.date,
                     image: blog.image
                 }
                 res.render('backend/blog/show', { title: 'Blog Show', layout: 'backend/layout', blog: details });
@@ -92,20 +93,20 @@ module.exports = {
             return res.render("backend/blog/create", { layout: "backend/layout", errors: errors.mapped() })
         }
 
-        let sampleFile,filePath;
+        let sampleFile, filePath;
         if (req.files || Object.keys(req.files).length !== 0) {
             // The name of the input field (i.e. "sampleFile") is used to retrive the uploaded file
             sampleFile = req.files.image;
             let rnd = new Date().valueOf();
-            filePath = 'upload/' +rnd+sampleFile.name;
+            filePath = 'upload/' + rnd + sampleFile.name;
 
             // Use the mv() method to place the file somewhere on your server
             sampleFile.mv('public/' + filePath, function (err) {
-            if (err)
-                //     return res.status(500).send(err);
-                // res.send('File Uploaded!');
-                res.redirect("/admin/blog/create")
-        });
+                if (err)
+                    //     return res.status(500).send(err);
+                    // res.send('File Uploaded!');
+                    res.redirect("/admin/blog/create")
+            });
         }
 
 
@@ -122,7 +123,7 @@ module.exports = {
         blog.save((err, newBlog) => {
             if (err) {
                 // return res.json({ error: "Something went wrong!" + err })
-               res.redirect("/admin/blog/create") 
+                res.redirect("/admin/blog/create")
             }
             res.redirect("/admin/blog");
         });

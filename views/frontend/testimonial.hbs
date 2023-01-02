@@ -1,43 +1,66 @@
-<div class="testimonial-design">
+<head>
 
-  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
 
+    <!-- Template Main CSS File -->
+    <link href="/stylesheets/frontend/testimonial.css" rel="stylesheet">
 
-      <div class="carousel-item active">
-              {{#each testimonial}}
-        {{!-- Card Start --}}
-        <div class="d-flex justify-content-center shadow">
-          <div class="card mb-3" style="width: 75%">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="/{{image}}" class="img-fluid rounded-start" alt="{{title}}">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h1 class="card-title">{{title}}</h1>
-                  <p class="card-text"><small class="text-muted">{{designation}}</small></p>
-                  <p class="card-text">{{details}}</p>
+</head>
+
+<body>
+
+    <main id="main">
+        <!-- ======= Testimonials Section ======= -->
+        <section id="testimonials" class="testimonials">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <h2>Testimonials</h2>
+                    <p>Voluptatem quibusdam ut ullam perferendis repellat non ut consequuntur est eveniet deleniti
+                        fignissimos eos quam</p>
                 </div>
-              </div>
+                <div class="swiper" data-aos="fade-up" data-aos-delay="100">
+                    <div class="swiper-wrapper">
+
+                        <div class="swiper-slide">
+                            <div class="testimonial-wrap row">
+                                {{#each testimonial}}
+                                <div class="testimonial-item  col-md-3">
+                                    <div class="d-flex align-items-center">
+                                        <img src="/{{image}}" class="testimonial-img flex-shrink-0" alt="">
+                                        <div>
+                                            <h3>{{title}}</h3>
+                                            <h4>{{designation}}</h4>
+                                            <div class="stars">
+                                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                                                    class="bi bi-star-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <i class="bi bi-quote quote-icon-left"></i>
+                                        {{details}}.
+                                        <i class="bi bi-quote quote-icon-right"></i>
+                                    </p>
+                                </div>
+                                {{/each}}
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+
             </div>
-          </div>
-        </div>
-      {{/each}}
-
-        {{!-- End of card --}}
-      </div>
+        </section><!-- End Testimonials Section -->
+    </main><!-- End #main -->
 
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </div>
+
+</body>

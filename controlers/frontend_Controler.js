@@ -18,8 +18,8 @@ module.exports = {
                     title: Element.title,
                     details: Element.details,
                     id: Element._id,
-                    catagory: req.body.catagory,
-                    date: req.body.date,
+                    catagory: Element.catagory,
+                    date: Element.date,
                     image: Element.image
                 });
             });
@@ -34,6 +34,8 @@ module.exports = {
                 const details = {
                     title: blog.title,
                     details: blog.details,
+                    catagory: blog.catagory,
+                    date: blog.date,
                     image: blog.image
                 }
                 res.render('frontend/singlePost', { title: 'Blog Post', blog: details });

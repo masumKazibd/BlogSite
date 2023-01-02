@@ -66,22 +66,6 @@ router.post('/testimonial/store', TestimonialRequest.store, testimonial_Controle
 router.post('/testimonial/:id/update', testimonial_Controler.testimonialUpdate);
 
 
-//   Route Contact us page. 
-
-router.get('/contact', contact_Controler.contactIndex);
-
-router.get('/contact/create', contact_Controler.contactCreate);
-
-router.get('/contact/:id/edit', contact_Controler.contactEdit);
-
-router.get('/contact/:id/delete', contact_Controler.contactDelete);
-
-router.get('/contact/:id/view', contact_Controler.contactShow);
-
-router.post('/contact/store', contact_Controler.contactStore);
-
-router.post('/contact/:id/update', contact_Controler.contactUpdate);
-
 //  about page. 
 
 router.get('/about', about_Controler.aboutIndex);
@@ -99,6 +83,22 @@ router.post('/about/store', AboutRequest.store, about_Controler.aboutStore);
 router.post('/about/:id/update', about_Controler.aboutUpdate);
 //   /* Route Social Media Link page. */
 
+
+//   Route Contact us page. 
+
+router.get('/contact', contact_Controler.contactIndex);
+
+router.get('/contact/create', contact_Controler.contactCreate);
+
+router.get('/contact/:id/edit', contact_Controler.contactEdit);
+
+router.get('/contact/:id/delete', contact_Controler.contactDelete);
+
+router.get('/contact/:id/view', contact_Controler.contactShow);
+
+router.post('/contact/store', contact_Controler.contactStore);
+
+router.post('/contact/:id/update', contact_Controler.contactUpdate);
 
 
 module.exports = router;
