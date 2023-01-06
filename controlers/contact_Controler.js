@@ -4,12 +4,11 @@ module.exports = {
 
     //contact-us controller
 
-    contactIndex: (req, res, next) =>{
+    contactIndex: (req, res, next) => {
         ContactModel.find((err, docs) => {
             if (err) {
                 res.render("error:", { errorStatus: 500 });
             }
-            // return res.json({ blogs: docs });
             const contacts = [];
             docs.forEach(Element => {
                 contacts.push({
@@ -25,11 +24,21 @@ module.exports = {
     contactCreate: (req, res, next) =>
         res.render('backend/contact/create', { title: 'contact Create', layout: 'backend/layout' }),
 
-    contactEdit: (req, res, next) =>
-        res.render('backend/contact/edit', { title: 'contact Edit', layout: 'backend/layout' }),
+    contactEdit: (req, res, next) => {
+        ContactModel.findById(req.params.id)
+            .then((contact) => {
+                const details = {
+                    icon: contact.icon,
+                    title: contact.title,
+                    details: contact.details,
+                    id: contact._id
+                }
+                res.render('backend/contact/edit', { title: 'contact Edit', layout: 'backend/layout', contact: details });
+            })
+    },
 
-    contactDelete: (req, res, next) =>{
-        ContactModel.findByIdAndRemove(req.params.id, (err, contact)=>{
+    contactDelete: (req, res, next) => {
+        ContactModel.findByIdAndRemove(req.params.id, (err, contact) => {
             if (err) {
                 res.render("error", { errorStatus: 500 })
             }
@@ -37,7 +46,7 @@ module.exports = {
         res.redirect("/admin/contact")
     },
 
-    contactStore: (req, res, next) =>{
+    contactStore: (req, res, next) => {
         // Data Validiation
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
@@ -58,7 +67,26 @@ module.exports = {
             res.redirect("/admin/contact");
         });
     },
-    contactUpdate: (req, res, next) =>
-        res.render('backend/contact/', { title: 'Blog Create', layout: 'backend/layout' }),
+    contactUpdate: (req, res, next) => {
+        const errors = validationResult(req);
 
+        if (!errors.isEmpty()) {
+            return res.render("backend/contact/edit", { layout: "backend/layout", errors: errors.mapped() })
+        }
+        
+        const contactObj = {
+            title: req.body.title,
+            icon: req.body.icon,
+            details: req.body.details
+        };
+
+
+        ContactModel.findByIdAndUpdate(req.params.id, contactObj, (err, contact) => {
+            if (err) {
+                res.redirect("/admin/contact/" + req.params.id + "/edit");
+            }
+            res.redirect("/admin/contact");
+        });
+
+    }
 }

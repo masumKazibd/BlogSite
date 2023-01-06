@@ -2,17 +2,21 @@ const mongoose = require("mongoose");
 
 const ContactSchema = new mongoose.Schema({
     
-    icon: {
+    name: {
         type: String,
         required: true,
     },
 
-    title: {
+    email: {
         type: String,
         required: true,
     },
     
-    details: {
+    subject: {
+        type: String,
+        required: true,
+    },
+    message: {
         type: String,
         required: true,
     },
