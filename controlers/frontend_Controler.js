@@ -3,6 +3,7 @@ const TeamModel = require('../models/team');
 const BlogModel = require('../models/blog');
 const TestimonialModel = require('../models/testimonial');
 const AboutModel = require('../models/about');
+const ContactModel = require('../models/contact');
 
 module.exports = {
     home: (req, res, next) => {
@@ -69,8 +70,24 @@ module.exports = {
     blog: (req, res, next) =>
         res.render('frontend/blog', { title: 'Read Our Blog' }),
 
-    contact: (req, res, next) =>
-        res.render('frontend/contact', { title: 'Contact with us' }),
+    contact: (req, res, next) =>{
+        ContactModel.find((err, docs) => {
+            if (err) {
+                res.render("error:", { errorStatus: 500 });
+            }
+            // return res.json({ blogs: docs });
+            const contacts = [];
+            docs.forEach(Element => {
+                contacts.push({
+                    icon: Element.icon,
+                    title: Element.title,
+                    details: Element.details,
+                    id: Element._id
+                });
+            });
+            res.render('frontend/contact', { title: 'Contact with us', contact: contacts });
+        });
+    },
 
     about: (req, res, next) => {
         // about list

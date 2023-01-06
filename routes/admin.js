@@ -94,7 +94,7 @@ router.get('/contact/:id/edit', contact_Controler.contactEdit);
 
 router.get('/contact/:id/delete', contact_Controler.contactDelete);
 
-router.get('/contact/:id/view', contact_Controler.contactShow);
+// router.get('/contact/:id/view', contact_Controler.contactShow);
 
 router.post('/contact/store', contact_Controler.contactStore);
 

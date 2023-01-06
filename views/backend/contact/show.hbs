@@ -1,0 +1,35 @@
+<body>
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Preview Post</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/blog">Blogs</a></li>
+          <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="single-post-content">
+      <div class="card">
+        <div class="card-body">
+          <!-- ======= Single Post Content ======= -->
+          <div class="card">
+            <div class="card-title"><span class="date">{{blog.catagory}}</span> <span class="mx-1">&bullet;</span> <span>{{blog.date}}</span></div>
+            <h1 class="card-header">{{blog.title}}</h1>
+            <div class="card mb-3">
+              <img src="/{{blog.image}}" class="card-img-top" alt="{{blog.image}}">
+            </div>
+            <p>{{blog.details}}.</p>
+          </div><!-- End Single Post Content -->
+        </div>
+      </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+
+</body>
