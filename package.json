@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "14.x"
+    "node": "16.x"
   },
   "scripts": {
     "start": "node ./bin/www",
@@ -21,10 +21,12 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.7.2",
     "morgan": "~1.9.1",
+    "netlify-lambda": "^2.0.15",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
-    "password-hash": "^1.2.2"
+    "password-hash": "^1.2.2",
+    "serverless-http": "^3.1.0"
   },
   "devDependencies": {
     "dotenv": "^16.0.3",
