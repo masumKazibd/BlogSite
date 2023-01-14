@@ -67,6 +67,7 @@ module.exports = {
             res.redirect("/admin/contact");
         });
     },
+
     contactUpdate: (req, res, next) => {
         const errors = validationResult(req);
 
