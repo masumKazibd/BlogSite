@@ -7,7 +7,7 @@ exports.store = [
     check('image', "Invalid image")
 ];
 
-exports.update = [
+exports.store = [
     check('title', "Invalid title").not().isEmpty().trim(),  
     check('designation', "Invalid designation").not().isEmpty().trim(),
     check('biography', "Invalid biography").not().isEmpty().trim(),

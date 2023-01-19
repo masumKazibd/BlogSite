@@ -3,7 +3,6 @@ const TeamModel = require('../models/team');
 const fs = require("fs");
 
 module.exports = {
-    //team controller
 
     teamIndex: (req, res, next) => {
         TeamModel.find((err, docs) => {
@@ -58,7 +57,6 @@ module.exports = {
             }
         })
         res.redirect("/admin/team")
-        // res.render('backend/team/delete', { title: 'Team delete', layout: 'backend/layout' }),
     },
     teamShow: (req, res, next) => {
         TeamModel.findById(req.params.id)

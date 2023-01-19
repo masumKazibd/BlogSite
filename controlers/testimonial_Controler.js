@@ -1,5 +1,6 @@
 const { validationResult } = require('express-validator');
 const TestimonialModel = require('../models/testimonial');
+const fs = require("fs");
 
 module.exports = {
     //testimonial controller
@@ -57,7 +58,6 @@ module.exports = {
             }
         })
         res.redirect("/admin/testimonial")
-        // res.render('backend/testimonial/delete', { title: 'Testimonial delete', layout: 'backend/layout' }),
     },
     testimonialShow: (req, res, next) =>{
         TestimonialModel.findById(req.params.id)

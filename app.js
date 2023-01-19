@@ -5,8 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const {engine}=require('express-handlebars')
 const fileUpload = require('express-fileupload');
-// for netlify
-const serverless = require("serverless-http");
+
 // passport authentication
 var passport = require("passport"),
   session = require('express-session');
